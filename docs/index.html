@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 
 <html>
 <head>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&amp;display=swap" rel="stylesheet"/><title>Profile Picture Preview</title>
 <style>
-    /* Style for the upload button */
     .button-17 {
       align-items: center;
       appearance: none;
@@ -39,14 +37,11 @@
       will-change: transform,opacity;
       z-index: 0;
     }
-    /* Other button states */
     .button-17:hover { background: #F6F9FE; color: #174ea6; }
     .button-17:active { box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%); outline: none; }
     .button-17:focus { outline: none; border: 2px solid #4285f4; }
     .button-17:not(:disabled) { box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px; }
-    /* ... */
     
-    /* Style for the container and circles */
     #imagePreviewContainer {
       display: flex;
       align-items: center;
@@ -75,7 +70,7 @@
 <button class="button-17" role="button">
 <input accept="image/*" id="imageUpload" style="opacity: 0; position: absolute;" type="file"/>
 <span>+</span> Upload
-  </button>
+  </button><button class="button-17" id="downloadBtn" role="button">Download</button><span string=" "></span>
 <br/>
 <input id="zoomSlider" max="500" min="100" type="range" value="100"/>
 <div id="imagePreviewContainer">
@@ -124,6 +119,23 @@
         img.style.transform = 'scale(' + zoomLevel + ')';
       }
     });
-  </script>
+  </script><br/><script>
+// Add download functionality
+const downloadBtn = document.getElementById('downloadBtn');
+downloadBtn.addEventListener('click', function() {
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = 300;
+  canvas.height = 300;
+  ctx.drawImage(imgs[7], 0, 0, 300, 300);
+  const dataURL = canvas.toDataURL('image/png');
+  const a = document.createElement('a');
+  a.href = dataURL;
+  a.download = 'profile_picture.png';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+});
+</script>
 </body>
 </html>
