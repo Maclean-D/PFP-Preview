@@ -4,7 +4,7 @@
 <head>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&amp;display=swap" rel="stylesheet"/><title>Profile Picture Preview</title>
 <style>
-    .button-17 {
+    .button-m3 {
       align-items: center;
       appearance: none;
       background-color: #fff;
@@ -36,11 +36,12 @@
       width: auto;
       will-change: transform,opacity;
       z-index: 0;
+      margin-right: 10px;
     }
-    .button-17:hover { background: #F6F9FE; color: #174ea6; }
-    .button-17:active { box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%); outline: none; }
-    .button-17:focus { outline: none; border: 2px solid #4285f4; }
-    .button-17:not(:disabled) { box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px; }
+    .button-m3:hover { background: #F6F9FE; color: #174ea6; }
+    .button-m3:active { box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%); outline: none; }
+    .button-m3:focus { outline: none; border: 2px solid #4285f4; }
+    .button-m3:not(:disabled) { box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px; }
     
     #imagePreviewContainer {
       display: flex;
@@ -63,14 +64,93 @@
       border-radius: 50%;
       transition: transform 0.2s ease;
     }
+
+    /*********** Baseline, reset styles ***********/
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+      width: 50rem;
+      margin-top: 20px;
+    }
+
+    /* Removes default focus */
+    input[type="range"]:focus {
+      outline: none;
+    }
+
+    /******** Chrome, Safari, Opera and Edge Chromium styles ********/
+    /* slider track */
+    input[type="range"]::-webkit-slider-runnable-track {
+      background-color: #8ae2ff;
+      border-radius: 0.5rem;
+      height: 0.25rem;
+    }
+
+    /* slider thumb */
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; /* Override default look */
+      appearance: none;
+      margin-top: -6px; /* Centers thumb on the track */
+      background-color: #007399;
+      border-radius: .5rem;
+      height: 1rem;
+      width: 1.5rem;
+    }
+
+    input[type="range"]:focus::-webkit-slider-thumb {
+      outline: 3px solid #007399;
+      outline-offset: 0.125rem;
+    }
+
+    /*********** Firefox styles ***********/
+    /* slider track */
+    input[type="range"]::-moz-range-track {
+      background-color: #8ae2ff;
+      border-radius: 0.5rem;
+      height: 0.25rem;
+    }
+
+    /* slider thumb */
+    input[type="range"]::-moz-range-thumb {
+      background-color: #007399;
+      border: none; /*Removes extra border that FF applies*/
+      border-radius: .5rem;
+      height: 1rem;
+      width: 1.5rem;
+    }
+
+    input[type="range"]:focus::-moz-range-thumb{
+      outline: 3px solid #007399;
+      outline-offset: 0.125rem;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    #main-content {
+      min-height: calc(100% - 60px);
+    }
+    footer {
+      background-color: grey;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
-<h1 style="font-family: 'Noto Sans', sans-serif; font-weight: 500;">Profile Picture Preview</h1>
-<button class="button-17" role="button">
+<h1 style="font-family: 'Noto Sans', sans-serif; font-weight: 500;">Profile Picture Previewer</h1>
+<p style="font-family: 'Noto Sans', sans-serif; font-weight: 400;">Upload a picture to preview what it will look like, before changing it for everyone to see!</p>
+<button class="button-m3" role="button">
 <input accept="image/*" id="imageUpload" style="opacity: 0; position: absolute;" type="file"/>
-<span>+</span> Upload
-  </button><button class="button-17" id="downloadBtn" role="button">Download</button><span string=" "></span>
+<span>+</span> ㅤUpload
+  </button><button class="button-m3" id="downloadBtn" role="button">Download</button><span string=" "></span>
 <br/>
 <input id="zoomSlider" max="500" min="100" type="range" value="100"/>
 <div id="imagePreviewContainer">
@@ -137,5 +217,8 @@ downloadBtn.addEventListener('click', function() {
   document.body.removeChild(a);
 });
 </script>
+<footer>
+  <a href="https://www.morizuru.co/" style="color: white; text-decoration: none; font-family: 'Noto Sans', sans-serif;">Morizuru Co.</a>
+</footer>
 </body>
 </html>
