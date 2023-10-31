@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&amp;display=swap" rel="stylesheet"/><title>Profile Picture Preview</title>
@@ -55,6 +54,8 @@
     .button-m3:not(:disabled) { box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px; }
     
     #imagePreviewContainer {
+      min-width: 300px;
+      min-height: 300px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -163,6 +164,11 @@
       width: 100%;
       left: 0;
     }
+    @media (max-width: 767px) {
+  .imagePreview:nth-child(-n+3) {
+    display: none;
+  }
+}
   </style>
 </head>
 <body>
@@ -192,7 +198,12 @@
     const imagePreviewContainer = document.getElementById('imagePreviewContainer');
     const zoomSlider = document.getElementById('zoomSlider');
 
-    const sizes = [25, 50, 75, 100, 150, 200, 250, 300];
+    let sizes;
+      if (window.innerWidth > 767) {
+        sizes = [25, 50, 75, 100, 150, 200, 250, 300];
+      } else {
+        sizes = [100, 150, 200, 250, 300];
+      }
 
     let imgs = [];
 
