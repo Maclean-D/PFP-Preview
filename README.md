@@ -1,5 +1,5 @@
-![Header](Header.png)
 # Profile Picture Previewer
+![Header](Header.png)
 
 ## Overview
 
