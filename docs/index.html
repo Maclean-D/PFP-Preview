@@ -3,6 +3,7 @@
 <html>
 <head>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&amp;display=swap" rel="stylesheet"/><title>Profile Picture Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
     .button-m3 {
       align-items: center;
@@ -132,7 +133,15 @@
     }
     #main-content {
       min-height: calc(100% - 60px);
-      padding-left: 10px;
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+    #zoomLabel {
+      margin-top: 20px;
+      margin-left: 23rem;
+      margin-bottom: -10px;
+      font-style: italic;
+      font-family: 'Noto Sans', sans-serif;
     }
     footer {
       background-color: grey;
@@ -142,18 +151,28 @@
       position: fixed;
       bottom: 0;
       width: 100%;
+      left: 0;
     }
   </style>
 </head>
 <body>
+<div id="main-content">
 <h1 style="font-family: 'Noto Sans', sans-serif; font-weight: 500;">Profile Picture Previewer</h1>
 <p style="font-family: 'Noto Sans', sans-serif; font-weight: 400;">Upload a picture to preview what it will look like, before changing it for everyone to see!</p>
 <button class="button-m3" role="button">
-<input accept="image/*" id="imageUpload" style="opacity: 0; position: absolute;" type="file"/>
-<span>+</span> ㅤUpload
-  </button><button class="button-m3" id="downloadBtn" role="button">Download</button><span string=" "></span>
+  <span class="material-symbols-outlined">add</span>
+  <input accept="image/*" id="imageUpload" style="opacity: 0; position: absolute;" type="file"/>
+  Upload Image
+</button>
+<button class="button-m3" id="downloadBtn" role="button">
+  <span class="material-symbols-outlined">download</span>
+  Download Cropped Image
+</button>
+
 <br/>
+<p id="zoomLabel"><em>Zoom Level</em></p>
 <input id="zoomSlider" max="500" min="100" type="range" value="100"/>
+<div>
 <div id="imagePreviewContainer">
 <!-- Image previews will be displayed here -->
 </div>
@@ -201,23 +220,36 @@
       }
     });
   </script><br/><script>
-// Add download functionality
-const downloadBtn = document.getElementById('downloadBtn');
-downloadBtn.addEventListener('click', function() {
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
-  canvas.width = 300;
-  canvas.height = 300;
-  ctx.drawImage(imgs[7], 0, 0, 300, 300);
-  const dataURL = canvas.toDataURL('image/png');
-  const a = document.createElement('a');
-  a.href = dataURL;
-  a.download = 'profile_picture.png';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-});
-</script>
+  // Add download functionality
+    const downloadBtn = document.getElementById('downloadBtn');
+    downloadBtn.addEventListener('click', function() {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 300;
+      canvas.height = 300;
+      
+      const zoomLevel = zoomSlider.value / 100;
+
+      // Calculate dimensions based on zoom level
+      const scaledWidth = 300 * zoomLevel;
+      const scaledHeight = 300 * zoomLevel;
+      const offsetX = (scaledWidth - 300) / 2;
+      const offsetY = (scaledHeight - 300) / 2;
+
+      // Draw the zoomed-in portion of the image onto the canvas
+      ctx.drawImage(imgs[7], -offsetX, -offsetY, scaledWidth, scaledHeight);
+      
+      const dataURL = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = dataURL;
+      a.download = 'profile_picture.png';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+
+  </script>
+<div>
 <footer>
   <a href="https://www.morizuru.co/" style="color: white; text-decoration: none; font-family: 'Noto Sans', sans-serif;">Morizuru Co.</a>
 </footer>
