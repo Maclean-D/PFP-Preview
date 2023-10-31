@@ -5,6 +5,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&amp;display=swap" rel="stylesheet"/><title>Profile Picture Preview</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <style>
+    body {
+    --dot-bg: white;
+    --dot-color: #a2d2ff;
+    --dot-size: 2px;
+    --dot-space: 22px;
+    background:
+      linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+      linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+      var(--dot-color);
+  }
     .button-m3 {
       align-items: center;
       appearance: none;
@@ -84,7 +94,7 @@
     /******** Chrome, Safari, Opera and Edge Chromium styles ********/
     /* slider track */
     input[type="range"]::-webkit-slider-runnable-track {
-      background-color: #8ae2ff;
+      background-color: #bde0fe;
       border-radius: 0.5rem;
       height: 0.25rem;
     }
@@ -94,28 +104,28 @@
       -webkit-appearance: none; /* Override default look */
       appearance: none;
       margin-top: -6px; /* Centers thumb on the track */
-      background-color: #007399;
+      background-color: #ffafcc;
       border-radius: .5rem;
       height: 1rem;
       width: 1.5rem;
     }
 
     input[type="range"]:focus::-webkit-slider-thumb {
-      outline: 3px solid #007399;
+      outline: 3px solid #ffafcc;
       outline-offset: 0.125rem;
     }
 
     /*********** Firefox styles ***********/
     /* slider track */
     input[type="range"]::-moz-range-track {
-      background-color: #8ae2ff;
+      background-color: #bde0fe;
       border-radius: 0.5rem;
       height: 0.25rem;
     }
 
     /* slider thumb */
     input[type="range"]::-moz-range-thumb {
-      background-color: #007399;
+      background-color: #ffafcc;
       border: none; /*Removes extra border that FF applies*/
       border-radius: .5rem;
       height: 1rem;
@@ -123,7 +133,7 @@
     }
 
     input[type="range"]:focus::-moz-range-thumb{
-      outline: 3px solid #007399;
+      outline: 3px solid #ffafcc;
       outline-offset: 0.125rem;
     }
     body, html {
