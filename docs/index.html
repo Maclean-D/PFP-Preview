@@ -200,7 +200,20 @@
         transform: translateY(-20px);
       }
     }
-
+    @keyframes spinRainbow {
+      0% { border-color: red; }
+      15% { border-color: orange; }
+      30% { border-color: yellow; }
+      45% { border-color: green; }
+      60% { border-color: blue; }
+      75% { border-color: indigo; }
+      90% { border-color: violet; }
+      100% { border-color: red; }
+    }
+    .spinning-rainbow {
+      animation: spinRainbow 1.5s linear infinite;
+      border: 2px solid red; /* Initial color */
+    }
     #Layer_1 {
       animation: float 3.25s infinite ease-in-out;
       margin-top: 20px;
@@ -232,7 +245,7 @@
 <!-- Image previews will be displayed here -->
 </div>
 <script>
-    // JavaScript to display the uploaded image and handle zoom
+  
     const imageUpload = document.getElementById('imageUpload');
     const imagePreviewContainer = document.getElementById('imagePreviewContainer');
     const zoomSlider = document.getElementById('zoomSlider');
@@ -247,6 +260,7 @@
     let imgs = [];
 
     imageUpload.addEventListener('change', function() {
+      document.querySelector('.button-m3').classList.add('spinning-rainbow');
       const file = this.files[0];
       if (file) {
         const reader = new FileReader();
@@ -263,6 +277,10 @@
             img.src = e.target.result;
             img.style.transform = 'scale(1)';
             
+            img.onload = function() {
+              document.querySelector('.button-m3').classList.remove('spinning-rainbow');
+            }
+
             div.appendChild(img);
             imgs.push(img);
             
@@ -280,7 +298,6 @@
       }
     });
   </script><br/><script>
-  // Add download functionality
     const downloadBtn = document.getElementById('downloadBtn');
     downloadBtn.addEventListener('click', function() {
       const canvas = document.createElement('canvas');
@@ -289,20 +306,17 @@
       canvas.height = 300;
       
       const zoomLevel = zoomSlider.value / 100;
-
-      // Calculate dimensions based on zoom level
       const scaledWidth = 300 * zoomLevel;
       const scaledHeight = 300 * zoomLevel;
       const offsetX = (scaledWidth - 300) / 2;
       const offsetY = (scaledHeight - 300) / 2;
 
-      // Draw the zoomed-in portion of the image onto the canvas
       ctx.drawImage(imgs[7], -offsetX, -offsetY, scaledWidth, scaledHeight);
       
       const dataURL = canvas.toDataURL('image/png');
       const a = document.createElement('a');
       a.href = dataURL;
-      a.download = 'profile_picture.png';
+      a.download = 'Cropped_Profile_Picture.png';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -311,7 +325,6 @@
   </script>
 <div>
 <footer style="display: flex; align-items: center; justify-content: center;">
-    <!-- Inserting the SVG content here -->
     <?xml version="1.0" encoding="utf-8"?>
     <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
