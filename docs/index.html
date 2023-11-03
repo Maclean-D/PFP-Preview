@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&amp;display=swap" rel="stylesheet"/><title>Profile Picture Preview</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.typekit.net/usb3efr.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+    body, h1, p, ul, a, footer {
+      font-family: "nitti-grotesk", sans-serif;
+    }
+    h1 {
+      font-weight: 500;
+      font-size: 48px;
+    }
+    p, ul {
+      font-weight: 400;
+      font-size: 24px;
+    }
+    /* For italic text */
+    em {
+      font-family: "nitti-grotesk", sans-serif;
+      font-weight: 400;
+      font-style: italic;
+    }
+    /* For bold text */
+    strong {
+      font-family: "nitti-grotesk", sans-serif;
+      font-weight: 600;
+    }
+
     body {
     --dot-bg: white;
     --dot-color: #a2d2ff;
@@ -20,6 +43,8 @@
       margin-bottom: 1rem;
     }
     .button-m3 {
+      font-family: "nitti-grotesk", sans-serif;
+      font-size: 24px;
       align-items: center;
       appearance: none;
       background-color: #fff;
@@ -31,10 +56,7 @@
       cursor: pointer;
       display: inline-flex;
       fill: currentcolor;
-      font-family: "Google Sans",Roboto,Arial,sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      height: 48px;
+      height: 64px;
       justify-content: center;
       letter-spacing: .25px;
       line-height: normal;
@@ -53,7 +75,7 @@
       z-index: 0;
       margin-top: 10px;
       margin-right: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
     .button-m3:hover, .button-m3.spinning-rainbow {
       background: #F6F9FE;
@@ -106,7 +128,7 @@
       appearance: none;
       background: transparent;
       cursor: pointer;
-      width: 50rem;
+      width: 22rem;
       margin-top: 20px;
       margin-bottom: 20px;
     }
@@ -165,18 +187,18 @@
       margin: 0;
       padding: 0;
       height: 100%;
+      overflow: hidden;
     }
     #main-content {
-      min-height: calc(100% - 60px);
+      min-height: calc(100vh - 60px);
       padding-left: 25px;
       padding-right: 25px;
     }
     #zoomLabel {
       margin-top: 20px;
-      margin-left: 23rem;
+      margin-left: 8rem;
       margin-bottom: -10px;
       font-style: italic;
-      font-family: 'Noto Sans', sans-serif;
     }
     footer {
       background-color: #bde0fe;
@@ -231,16 +253,7 @@
       90% { border-color: violet; }
       100% { border-color: red; }
     }
-    @media (max-width: 806px) {
-      .button-m3 {
-        transform: scale(1.25);
-        margin-left: 55px;
-      }
 
-      .button-m3:first-of-type {
-        margin-left: 25px;
-      }
-    }
     .spinning-rainbow {
       animation: spinRainbow 1.5s linear infinite;
       border: 2px solid red; /* Initial color */
@@ -257,9 +270,9 @@
 </head>
 <body>
 <div id="main-content">
-<h1 style="font-family: 'Noto Sans', sans-serif; font-weight: 500;">Profile Picture Previewer</h1>
-<p style="font-family: 'Noto Sans', sans-serif; font-weight: 400;">Upload a picture of any type or ratio to preview what it will look at different sizes to get the scaling just right!</p>
-<ul style="font-family: 'Noto Sans', sans-serif; font-weight: 400; list-style-type: disc; padding-left: 20px;">
+<h1>Profile Picture Previewer</h1>
+<p>Upload a picture of any type or ratio to preview what it will look at different sizes to get the scaling just right!</p>
+<ul style="list-style-type: disc; padding-left: 20px;">
   <li>All images are handled on-device and never sent to a server</li>
   <li>Open source on <a href="https://github.com/Maclean-D/PFP-Preview" target="_blank">Github</a></li>
 </ul>
@@ -379,7 +392,7 @@
       c-1.491,0.4-3.422,0.543-5.41,0.467L28.082,42.186l105.7,67.876L80.055,124.458z M126.347,26.936l-3.386-12.639l15.895,9.287
       L126.347,26.936z"/>
     </svg>
-  <a href="https://www.morizuru.co/" style="color: white; text-decoration: none; font-family: 'Noto Sans', sans-serif; font-size: 36px">Morizuru Co.</a>
+    <a href="https://www.morizuru.co/" style="color: white; text-decoration: none; font-family: 'nitti-grotesk', sans-serif; font-weight: 500; font-size: 48px; margin-right: 30px;">Morizuru Co.</a>
 </footer>
 </body>
 </html>
